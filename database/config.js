@@ -6,7 +6,7 @@ const dbConnection = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log("data base online");
+    console.log("Data base online and running");
   } catch (error) {
     console.log(error);
     throw new Error("Error when Initializing database");
@@ -16,11 +16,3 @@ const dbConnection = async () => {
 module.exports = {
   dbConnection,
 };
-
-```
-I need to check why they are not supported not more
-
-useCreateIndex: true,
-useFindAndModify: false
-
-```;

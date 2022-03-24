@@ -17,15 +17,23 @@ const usuariosGet = (req = request, res = response) => {
 //
 
 const usuariosPost = async (req, res = response) => {
-  const body = req.body;
+  // How to exclude elements
+  // const { google, ...restosElements } = req.body;
+  // const user = new User(restosElements);
 
-  const user = new User(body);
+  //
+  const { name, password, email, role } = req.body;
+
+  const user = new User({
+    name,
+    password,
+    email,
+    role,
+  });
   console.log(user);
   await user.save();
 
-  res.json({
-    user,
-  });
+  res.json({ user });
 };
 
 //

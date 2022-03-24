@@ -35,4 +35,7 @@ const UserSchema = Schema({
   },
 });
 
-module.exports = {};
+// ALWAYS WHEN CREATING MY MODEL I NEED TO WRITE IN SINGULAR NO PLURAL
+// BUT MONGO DB WILL MAKE PLURAL
+
+module.exports = model("User", UserSchema);

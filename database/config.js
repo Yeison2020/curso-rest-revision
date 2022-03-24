@@ -8,6 +8,7 @@ const dbConnection = async () => {
       useCreateIndex: true,
       useFindAndModify: false,
     });
+    console.log("data base online");
   } catch (error) {
     console.log(error);
     throw new Error("Error when Initiatinz database");

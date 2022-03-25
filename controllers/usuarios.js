@@ -1,6 +1,7 @@
 const { response, request } = require("express");
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
+const { validationResult } = require("express-validator");
 
 //
 const usuariosGet = (req = request, res = response) => {
@@ -21,6 +22,15 @@ const usuariosPost = async (req, res = response) => {
   // How to exclude elements
   // const { google, ...restosElements } = req.body;
   // const user = new User(restosElements);
+
+  // Validate Emails
+
+  const errors = validationResult(req);
+
+  // Mean If errors not empty
+  if (!errors.isEmpty()) {
+    return res.status(400).json(errors);
+  }
 
   //
   const { name, password, email, role } = req.body;

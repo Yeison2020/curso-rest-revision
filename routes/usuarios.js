@@ -19,7 +19,14 @@ router.put("/:id", usuariosPut);
 
 // The router takes three arguments 1. path default 2. middleware 3. function Controller
 
-router.post("/", check, usuariosPost);
+// This middleware will send errors to my request and there I need to check If I got any errors from the
+// Check and If yes I need to return those errors on my on format
+
+router.post(
+  "/",
+  check("email", "Your Email format incorrect").isEmail(),
+  usuariosPost
+);
 
 router.delete("/", usuariosDelete);
 

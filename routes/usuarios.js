@@ -24,7 +24,12 @@ router.put("/:id", usuariosPut);
 
 router.post(
   "/",
-  check("email", "Your Email format incorrect").isEmail(),
+  [
+    check("email", "Your Email format incorrect").not().isEmpty(),
+    check("name", "Your name is requiered").isEmail(),
+    check("passoword", "Should contain more 6 letters").isLength({ min: 6 }),
+    check("role", "Not a valid role").isIn(["ADMIN_ROLE", "USER_ROLE"]),
+  ],
   usuariosPost
 );
 

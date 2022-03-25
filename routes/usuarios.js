@@ -22,7 +22,7 @@ router.put("/:id", usuariosPut);
 
 // This middleware will send errors to my request and there I need to check If I got any errors from the
 // Check and If yes I need to return those errors on my on format
-
+// Adding validations
 router.post(
   "/",
   [

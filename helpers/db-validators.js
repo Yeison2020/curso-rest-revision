@@ -12,7 +12,7 @@ const emailExistes = async (email = "") => {
   // Why errors I need to pass to this function the elements that check will pass into it.
   const emailExiste = await User.findOne({ email: email });
   if (emailExiste) {
-    throw new Error("This email already exist in the db Please choose another");
+    throw new Error(`This ${email} already exist in the db`);
   }
 };
 

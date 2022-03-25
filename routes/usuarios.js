@@ -8,7 +8,7 @@ const { validarCampos } = require("../middlewares/validar-campos");
 
 // Helpers Functions
 
-const { isRoleValid } = require("../helpers/db-validators");
+const { isRoleValid, emailExistes } = require("../helpers/db-validators");
 
 //
 
@@ -38,6 +38,8 @@ router.post(
     check("email", "Your name is requiered").isEmail(),
     check("password", "Should contain more 6 letters").isLength({ min: 6 }),
     check("role").custom(isRoleValid),
+    check("email").custom(emailExistes),
+
     // check("role", "Not a valid role").isIn(["ADMIN_ROLE", "USER_ROLE"]),
     validarCampos,
   ],

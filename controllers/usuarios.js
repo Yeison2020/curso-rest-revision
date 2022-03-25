@@ -36,12 +36,12 @@ const usuariosPost = async (req, res = response) => {
 
   // Check If email exist
   // Important
-  const emailExiste = await User.findOne({ email: email });
-  if (emailExiste) {
-    return res.status(400).json({
-      msg: "Email already register",
-    });
-  }
+  // const emailExiste = await User.findOne({ email: email });
+  // if (emailExiste) {
+  //   return res.status(400).json({
+  //     msg: "Email already register",
+  //   });
+  // }
 
   // Encriptar Password
 

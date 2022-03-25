@@ -35,6 +35,15 @@ const UserSchema = Schema({
   },
 });
 
+// OVERWRITE METHODS IN MY MODEL
+
+// Notes It's to be a regular function
+// This is like a serializer in nodeJS extracting values that I do not need to be render. So Important Check it our and learn it well.
+UserSchema.methods.toJSON = function () {
+  const { __v, password, ...user } = this.toObject();
+  return user;
+};
+
 // ALWAYS WHEN CREATING MY MODEL I NEED TO WRITE IN SINGULAR NO PLURAL
 // BUT MONGO DB WILL MAKE PLURAL
 

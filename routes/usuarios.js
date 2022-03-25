@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const { validarCampos } = require("../middlewares/validar-campos");
 
 // This middleware is comming from express-validator
 const { check } = require("express-validator");
@@ -25,10 +26,11 @@ router.put("/:id", usuariosPut);
 router.post(
   "/",
   [
-    check("email", "Your Email format incorrect").not().isEmpty(),
-    check("name", "Your name is requiered").isEmail(),
-    check("passoword", "Should contain more 6 letters").isLength({ min: 6 }),
+    check("name", "Your Email format incorrect").not().isEmpty(),
+    check("email", "Your name is requiered").isEmail(),
+    check("password", "Should contain more 6 letters").isLength({ min: 6 }),
     check("role", "Not a valid role").isIn(["ADMIN_ROLE", "USER_ROLE"]),
+    validarCampos,
   ],
   usuariosPost
 );

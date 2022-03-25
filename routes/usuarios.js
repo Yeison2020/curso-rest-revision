@@ -1,10 +1,16 @@
 const { Router } = require("express");
-const { validarCampos } = require("../middlewares/validar-campos");
-
-const Role = require("../models/role");
 
 // This middleware is comming from express-validator
 const { check } = require("express-validator");
+
+// Middleware validators customs
+const { validarCampos } = require("../middlewares/validar-campos");
+
+// Helpers Functions
+
+const { isRoleValid } = require("../helpers/db-validators");
+
+//
 
 const {
   usuariosGet,
@@ -31,12 +37,7 @@ router.post(
     check("name", "Your Email format incorrect").not().isEmpty(),
     check("email", "Your name is requiered").isEmail(),
     check("password", "Should contain more 6 letters").isLength({ min: 6 }),
-    check("role").custom(async (role = "") => {
-      const existeRole = await Role.findOne({ role });
-      if (!existeRole) {
-        throw new Error(`Your ${role} is not in the DB`);
-      }
-    }),
+    check("role").custom(isRoleValid()),
     // check("role", "Not a valid role").isIn(["ADMIN_ROLE", "USER_ROLE"]),
     validarCampos,
   ],

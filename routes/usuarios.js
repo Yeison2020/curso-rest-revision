@@ -33,6 +33,7 @@ router.put(
   [
     check("id", "Not a valid Id Please try again").isMongoId(),
     check("id").custom(existeUserById),
+    check("role").custom(isRoleValid),
     validarCampos,
   ],
 

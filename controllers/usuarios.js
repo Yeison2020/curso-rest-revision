@@ -34,15 +34,6 @@ const usuariosPost = async (req, res = response) => {
     role,
   });
 
-  // Check If email exist
-  // Important
-  // const emailExiste = await User.findOne({ email: email });
-  // if (emailExiste) {
-  //   return res.status(400).json({
-  //     msg: "Email already register",
-  //   });
-  // }
-
   // Encriptar Password
 
   const salt = bcrypt.genSaltSync(10);

@@ -69,14 +69,14 @@ const usuariosPut = async (req, res = response) => {
 //
 const usuariosPatch = (req, res = response) => {
   res.json({
-    msg: "patch API - usuariosPatch",
+    msg: "patch API - usuarios Patch Controller",
   });
 };
 
 //
 const usuariosDelete = (req, res = response) => {
   res.json({
-    msg: "delete API - usuariosDelete",
+    msg: "delete API - usuarios Delete Controller",
   });
 };
 

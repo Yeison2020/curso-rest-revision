@@ -26,7 +26,7 @@ router.get("/", usuariosGet);
 
 router.put(
   "/:id",
-  [check("id", "Not a valid Id Please try again"), validarCampos],
+  [check("id", "Not a valid Id Please try again").isMongoId(), validarCampos],
 
   usuariosPut
 );

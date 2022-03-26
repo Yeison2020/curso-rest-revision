@@ -8,7 +8,11 @@ const { validarCampos } = require("../middlewares/validar-campos");
 
 // Helpers Functions
 
-const { isRoleValid, emailExistes } = require("../helpers/db-validators");
+const {
+  isRoleValid,
+  emailExistes,
+  existeUserById,
+} = require("../helpers/db-validators");
 
 //
 
@@ -26,7 +30,11 @@ router.get("/", usuariosGet);
 
 router.put(
   "/:id",
-  [check("id", "Not a valid Id Please try again").isMongoId(), validarCampos],
+  [
+    check("id", "Not a valid Id Please try again").isMongoId(),
+    check("id").custom(existeUserById),
+    validarCampos,
+  ],
 
   usuariosPut
 );

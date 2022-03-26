@@ -24,7 +24,12 @@ const router = Router();
 
 router.get("/", usuariosGet);
 
-router.put("/:id", usuariosPut);
+router.put(
+  "/:id",
+  [check("id", "Not a valid Id Please try again"), validarCampos],
+
+  usuariosPut
+);
 
 // The router takes three arguments 1. path default 2. middleware 3. function Controller
 

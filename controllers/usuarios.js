@@ -62,7 +62,7 @@ const usuariosPut = async (req, res = response) => {
 
   res.json({
     msg: "put API - usuariosPut",
-    id,
+    userDB,
   });
 };
 

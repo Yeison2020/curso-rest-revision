@@ -61,7 +61,7 @@ const usuariosPut = async (req, res = response) => {
   const userDB = await User.findByIdAndUpdate(id, resto);
 
   res.json({
-    msg: "put API - usuariosPut",
+    msg: "put API - usuarios Put Controller",
     userDB,
   });
 };

@@ -19,7 +19,7 @@ const usuariosGet = async (req = request, res = response) => {
 
   // const total = await User.countDocuments(query_Not_Active_User);\
 
-  // Best wait of calling two primises
+  // Best wait of calling two promises
 
   const [total, users] = await Promise.all([
     User.countDocuments(query_Not_Active_User),
@@ -92,6 +92,7 @@ const usuariosPatch = (req, res = response) => {
 
 //
 const usuariosDelete = (req, res = response) => {
+  const { id } = req.params;
   res.json({
     msg: "delete API - usuarios Delete Controller",
   });

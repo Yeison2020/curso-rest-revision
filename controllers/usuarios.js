@@ -10,7 +10,10 @@ const usuariosGet = async (req = request, res = response) => {
   const { limit = 5, desde = 0 } = req.query;
 
   const users = await User.find().skip(desde).limit(Number(limit));
+  // Recommended way to use Count here
+  const total = await User.countDocuments();
   res.json({
+    total,
     users,
   });
 };

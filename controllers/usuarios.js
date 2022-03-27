@@ -95,7 +95,14 @@ const usuariosDelete = async (req, res = response) => {
   const { id } = req.params;
 
   // delete  users
-  const user = await User.findByIdAndDelete(id);
+  // const user = await User.findByIdAndDelete(id);
+
+  // Always recommended is to change the statuc of the User just in case the users have created information attached to this user
+
+  // I will change the status of the User how will be Unactive
+
+  const user = await User.findByIdAndUpdate(id, { status: false });
+
   res.json({
     msg: "delete API - usuarios Delete Controller",
     user,

@@ -91,10 +91,14 @@ const usuariosPatch = (req, res = response) => {
 };
 
 //
-const usuariosDelete = (req, res = response) => {
+const usuariosDelete = async (req, res = response) => {
   const { id } = req.params;
+
+  // delete  users
+  const user = User.findByIdAndDelete(id);
   res.json({
     msg: "delete API - usuarios Delete Controller",
+    user,
   });
 };
 

@@ -4,13 +4,12 @@ const bcrypt = require("bcrypt");
 
 //
 const usuariosGet = async (req = request, res = response) => {
-  // const { q, nombre = "No name", apikey, page = 1, limit } = req.query;
-
   // How to extract all my Users from database
+  // http://localhost:8080/api/usuarios?limit=2&desde=1
 
-  const { limit = 5 } = req.query;
+  const { limit = 5, desde = 0 } = req.query;
 
-  const users = await User.find().limit(limit);
+  const users = await User.find().skip(desde).limit(Number(limit));
   res.json({
     users,
   });

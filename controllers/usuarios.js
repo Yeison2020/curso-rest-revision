@@ -11,11 +11,20 @@ const usuariosGet = async (req = request, res = response) => {
 
   const query_Not_Active_User = { status: true };
 
-  const users = await User.find(query_Not_Active_User)
-    .skip(desde)
-    .limit(Number(limit));
-  // Recommended way to use Count here
-  const total = await User.countDocuments(query_Not_Active_User);
+  // I need to fix await on differents: DONT PUT TWO AWAIT AFTER ANOTHER
+
+  // const users = await User.find(query_Not_Active_User)
+  //   .skip(desde)
+  //   .limit(Number(limit));
+
+  // const total = await User.countDocuments(query_Not_Active_User);\
+
+  // Best wait of calling two primises
+
+  const [total, users] = await Promise.all([
+    User.countDocuments(query_Not_Active_User),
+    User.find(query_Not_Active_User),
+  ]);
   res.json({
     total,
     users,

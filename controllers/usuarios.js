@@ -8,7 +8,9 @@ const usuariosGet = async (req = request, res = response) => {
 
   // How to extract all my Users from database
 
-  const users = await User.find();
+  const { limit = 5 } = req.query;
+
+  const users = await User.find().limit(limit);
   res.json({
     users,
   });

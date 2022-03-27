@@ -51,6 +51,8 @@ const usuariosPut = async (req, res = response) => {
   const { id } = req.params;
 
   // This is extracting those elments from here and means that they can not be update here
+
+  // Meaning here we can not update password, google, email
   const { password, google, email, ...resto } = req.body;
 
   // Validar contra database

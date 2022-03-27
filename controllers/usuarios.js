@@ -9,9 +9,13 @@ const usuariosGet = async (req = request, res = response) => {
 
   const { limit = 5, desde = 0 } = req.query;
 
-  const users = await User.find().skip(desde).limit(Number(limit));
+  const query_Not_Active_User = { status: true };
+
+  const users = await User.find(query_Not_Active_User)
+    .skip(desde)
+    .limit(Number(limit));
   // Recommended way to use Count here
-  const total = await User.countDocuments();
+  const total = await User.countDocuments(query_Not_Active_User);
   res.json({
     total,
     users,

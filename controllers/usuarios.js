@@ -3,15 +3,14 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 
 //
-const usuariosGet = (req = request, res = response) => {
-  const { q, nombre = "No name", apikey, page = 1, limit } = req.query;
+const usuariosGet = async (req = request, res = response) => {
+  // const { q, nombre = "No name", apikey, page = 1, limit } = req.query;
+
+  // How to extract all my Users from database
+
+  const users = await User.find();
   res.json({
-    msg: "get API - controlador",
-    q,
-    nombre,
-    apikey,
-    page,
-    limit,
+    users,
   });
 };
 
@@ -64,10 +63,7 @@ const usuariosPut = async (req, res = response) => {
   // Important here
   const userDB = await User.findByIdAndUpdate(id, resto);
 
-  res.json({
-    msg: "put API - usuarios Put Controller",
-    userDB,
-  });
+  res.json(userDB);
 };
 
 //

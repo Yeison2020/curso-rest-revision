@@ -20,7 +20,7 @@ const existeUserById = async (id) => {
   // Why errors I need to pass to this function the elements that check will pass into it.
   const existeid = await User.findById(id);
   if (!existeid) {
-    throw new Error(`This ${id} does not exist in the DB`);
+    throw new Error(`This ${id} does not exist in the DB Check again`);
   }
 };
 

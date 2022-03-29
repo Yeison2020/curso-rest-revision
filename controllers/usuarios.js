@@ -104,7 +104,7 @@ const usuariosDelete = async (req, res = response) => {
   const user = await User.findByIdAndUpdate(id, { status: false });
 
   res.json({
-    msg: "delete API - usuarios Delete Controller",
+    msg: "delete API - usuarios Delete Controller Return Deleted but just changed It's status",
     user,
   });
 };

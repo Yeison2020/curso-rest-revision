@@ -9,7 +9,9 @@ const dbConnection = async () => {
     console.log("Data base online and running");
   } catch (error) {
     console.log(error);
-    throw new Error("Error when Initializing database");
+    throw new Error(
+      "Error when Initializing database Check database folder or where It's been used"
+    );
   }
 };
 

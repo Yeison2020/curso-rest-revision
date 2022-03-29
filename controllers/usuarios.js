@@ -86,7 +86,7 @@ const usuariosPut = async (req, res = response) => {
 //
 const usuariosPatch = (req, res = response) => {
   res.json({
-    msg: "patch API - usuarios Patch Controller",
+    msg: "patch API - usuarios Patch Controller Need to be upates",
   });
 };
 
